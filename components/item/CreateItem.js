@@ -32,14 +32,38 @@ class CreateItem extends Component {
     title: "Cool Shoes",
     description: "Italian shoe",
     price: 1000,
-    image: "italian_show.jpg",
-    largeImage: "italian_show_large.jpg"
+    image: "",
+    largeImage: ""
   };
 
   handleSubmit = event => {
     const { name, value, type } = event.target;
     const val = type === "number" ? parseFloat(value) : value;
     this.setState({ [name]: val });
+  };
+
+  uploadImage = async event => {
+    console.log("uploading files ...");
+    const files = event.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "sickfits");
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/hafeezsyed/image/upload",
+      {
+        method: "POST",
+        body: data
+      }
+    );
+
+    const file = await res.json();
+
+    this.setState({
+      image: file.secure_url,
+      largeImage: file.eager[0].secure_url
+    });
+    console.log(file);
   };
   render() {
     return (
@@ -63,6 +87,24 @@ class CreateItem extends Component {
             <Error error={error} />
             <h2>Sell and Item</h2>
             <fieldset disabled={loading} aria-busy={loading}>
+              <label htmlFor="file">
+                File
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  placeholder="Upload an Image"
+                  onChange={this.uploadImage}
+                  required
+                />
+                {this.state.image && (
+                  <img
+                    src={this.state.image}
+                    alt="upload preview"
+                    width="250"
+                  />
+                )}
+              </label>
               <label htmlFor="title">
                 Title
                 <input
