@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import Router from "next/router";
-import Form from "../styles/Form";
-import formatMonney from "../../lib/formatMoney";
-import Error from "../ErrorMessage";
+import Form from "./styles/Form";
+import formatMonney from "../lib/formatMoney";
+import Error from "./ErrorMessage";
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
@@ -85,7 +85,7 @@ class CreateItem extends Component {
             }}
           >
             <Error error={error} />
-            <h2>Sell and Item</h2>
+            <h2>Sell an item</h2>
             <fieldset disabled={loading} aria-busy={loading}>
               <label htmlFor="file">
                 File
