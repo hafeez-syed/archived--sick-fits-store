@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Items from "./items";
+import Items from "../components/items";
 const Home = props => {
   return (
     <div>
