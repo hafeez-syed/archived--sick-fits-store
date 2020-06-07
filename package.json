@@ -98,12 +98,12 @@
     }
   },
   "devDependencies": {
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^26.0.1",
     "babel-plugin-module-resolver": "^3.1.1",
     "causal": "0.0.3",
     "enzyme-to-json": "^3.3.5",
     "graphql-tools": "^4.0.3",
-    "jest": "^23.6.0",
+    "jest": "^26.0.1",
     "jest-transform-graphql": "^2.1.0"
   },
   "dependencies": {
@@ -118,7 +118,7 @@
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "lodash.debounce": "^4.0.8",
-    "next": "^7.0.2",
+    "next": "^9.4.4",
     "next-with-apollo": "^3.3.0",
     "nprogress": "^0.2.0",
     "prop-types": "^15.6.2",
